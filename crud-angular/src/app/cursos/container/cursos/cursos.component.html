@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary"> Cursos Disponíveis </mat-toolbar>
+    <div class="column-flex mat-elevation-z8">
+      <app-cursos-lista
+        *ngIf="cursos$ | async as cursos; else loading"
+        [cursos]="cursos"
+        (add)="onAdd()"
+        (edit)="onEdit($event)"
+        (delete)="onDelete($event)"
+      >
+      </app-cursos-lista>
+
+      <ng-template #loading>
+        <div class="loading-spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>
